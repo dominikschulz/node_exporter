@@ -64,7 +64,7 @@ func init() {
 func NewFilesystemCollector() (Collector, error) {
 	subsystem := "filesystem"
 	mountPointPattern := regexp.MustCompile(*ignoredMountPoints)
-	fsTypePatter := regexp.MustCompile(*ignoredFsTypes)
+	fsTypePattern := regexp.MustCompile(*ignoredFsTypes)
 
 	sizeDesc := prometheus.NewDesc(
 		prometheus.BuildFQName(Namespace, subsystem, "size"),

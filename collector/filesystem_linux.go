@@ -48,7 +48,7 @@ func (c *filesystemCollector) GetStats() (stats []filesystemStats, err error) {
 			log.Debugf("Ignoring mount point: %s", mpd.mountPoint)
 			continue
 		}
-		if c.ignoredFsTypesPatter.MatchString(mpd.fsType) {
+		if c.ignoredFsTypesPattern.MatchString(mpd.fsType) {
 			log.Debugf("Ignoring fs type: %s", mpd.fsType)
 			continue
 		}
