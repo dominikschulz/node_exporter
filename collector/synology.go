@@ -144,6 +144,15 @@ func synoBlockDevsIdleGt(idleTime int) bool {
 	return max > idleTime
 }
 
+func synoBlockDevIdleLt(idleTime int) bool {
+	for _, dev := range listBlockDevs() {
+		if iv := intFromFile(dev, "syno_idle_time"); iv < idleTime {
+			return true
+		}
+	}
+	return false
+}
+
 func listBlockDevs() []string {
 	files, err := ioutil.ReadDir(sysFilePath("block"))
 	if err != nil {

@@ -45,7 +45,7 @@ func (c *filesystemCollector) GetStats() ([]filesystemStats, error) {
 	}
 	stats := []filesystemStats{}
 	for _, labels := range mps {
-		if synoBlockDevsIdleGt(10) {
+		if !synoBlockDevIdleLt(10) {
 			log.Debugf("Ignoring idle devices")
 			continue
 		}
